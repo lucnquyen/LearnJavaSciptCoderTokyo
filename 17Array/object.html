@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array Methods</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 16px;
+        }
+    </style>
+    <script>
+        var users = [
+            {name: 'Tom', gender: 'male'},
+            {name: 'Hùng', gender: 'male'},
+            {name: 'Danh', gender: 'female'},
+            {name: 'Ngọc Hoàn', gender: 'female'},
+            {name: 'Tý', gender: 'male'},
+        ];
+
+        var userList = $('#userList');
+        var genderFilter = $('#genderFilter');
+
+        render(userList, users);
+
+        genderFilter.on('change', function() {
+            var selectedGender = this.value; // male or female
+            // 
+            var filterUsers = users.filter(function(user) {
+                return user.gender === selectedGender;
+            });
+            render(userList, filterUsers);
+        });
+
+        function render(container, items) {
+            //
+            var htmlItems = items.map(function(item) {
+                return '<li class="list-group-item">'+ item.name + '</li>';
+            });
+            // htmlItems
+            var html = htmlItems.join();
+            container.html(html);
+        }
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col form-group">
+                <label for="genderFilter">Gender</label>
+                <select class="form-control" id="genderFilter">
+                    <option value="null">All</option>
+                    <option value="male">Male</option>
+                    <option value="demale">Female</option>
+                </select>
+            </div>
+        </div>
+        <ul class="list-group" id="userList">
+            <li class="list-group-item">Tom</li>
+            <li class="list-group-item">Hùng</li>
+            <li class="list-group-item">Danh</li>
+            <li class="list-group-item">Ngọc Hoàn</li>
+            <li class="list-group-item">Tý</li>
+        </ul>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
