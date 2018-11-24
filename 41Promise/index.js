@@ -1,6 +1,6 @@
 // promise
 
-var fs = require('promise-fs');
+// var fs = require('promise-fs');
 
 // fs.readFile('song1.txt', {encoding: 'utf8'})
 //     .then(function(song1) {
@@ -35,7 +35,7 @@ var fs = require('promise-fs');
 
 
 
-//  promise
+//  promise ->>
 
 var fs = require('fs');
 
